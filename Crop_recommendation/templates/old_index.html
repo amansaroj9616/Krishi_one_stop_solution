@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,54 +8,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Crop Recommendation System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
     <style>
+        
         body {
-            background-image: url("{{ url_for('static', filename='bg_crop_recommendation.png') }}");
+            background-image: url("{{ url_for('static', filename='istockphoto-1284379612-170667a.jpg') }}");
             background-size: cover;
             background-position: center;
-            color: #fff; 
+            color: #fff; /* Set default text color to white */
         }
         h1 {
-            color: #ffcc00; 
+            color: #ffcc00; /* Golden yellow for the title to contrast with the background */
             text-align: center;
             margin-top: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
-        }
-        header {
-            background-color: rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add subtle shadow for better readability */
         }
         label {
-            color: #ffcc00; 
-            font-size: 1.1em; 
-            font-weight: bold; 
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #ffcc00; /* Light golden color for the form labels */
+            font-size: 1.1em; /* Increase font size for labels */
+            font-weight: bold; /* Make labels bold */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow to labels for visibility */
         }
         .form-control {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
             color: #000;
-            font-size: 1em; 
-            padding: 10px; 
-            height: 45px; 
-            border: 1px solid rgba(0, 0, 0, 0.1); 
-            margin-bottom: 15px; 
+            font-size: 0.8em; /* Smaller font size for input fields */
+            padding: 3px; /* Decrease padding to make input boxes smaller */
+            height: 35px; /* Set a fixed height for the input fields */
+            width: 80%; /* Decrease width for smaller boxes */
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+            margin-bottom: 15px; /* Add margin for spacing */
+        }
+        .form-control::placeholder {
+            color: #6c757d;
         }
         .btn-primary {
-            background-color: #00ff00; 
+            background-color: #00ff00; /* Bright green for buttons */
             border: none;
-            font-size: 1.2em; 
-            padding: 10px 20px; 
         }
         .btn-primary:hover {
-            background-color: #00cc00; 
+            background-color: #00cc00; /* Slightly darker green on hover */
         }
         .navbar-dark .navbar-nav .nav-link {
-            color: #fff; 
+            color: #fff; /* White text for nav links */
         }
         .navbar-dark .navbar-brand {
-            color: #ffcc00; 
+            color: #ffcc00; /* Golden yellow for the brand text */
         }
         .chart-container {
             position: relative;
@@ -60,55 +62,32 @@
             width: 100%;
             margin: 30px 0;
         }
+
+        /* Style for the recommendation text */
         .recommendation {
-            color: #ffcc00; 
-            font-size: 2em; 
+            color: #ffcc00; /* Golden yellow text for contrast */
+            font-size: 2em; /* Large text */
             font-weight: bold;
             text-align: center;
             margin-top: 30px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7); 
-            border-radius: 10px; 
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+            border-radius: 10px; /* Rounded corners */
             position: relative;
-        }
-        .form-container {
-            backdrop-filter: blur(5px);
-            background: rgba(0, 0, 0, 0.5); 
-            border-style: outset;
-            border-width: 5px;
-            max-width: 840px;  
-            margin: 2% 2% 2% auto;
-            padding: 17px; 
-            border-radius: 15px; 
         }
     </style>
 </head>
 <body>
-    
-<!-- *********************** Header ********************************* -->
-<div class="container-fluid p-2">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-2">
-        <div class="col-md-2 col-12">
-            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <img src="{{ url_for('static', filename='Krishi.png') }}" alt="Krishi Logo" width="100" style="border-radius: 10%">
-            </a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"></a>
         </div>
-        <nav class="nav-links nav col-12 col-md-5 justify-content-center mb-md-0">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-        </nav>
-        <div class="col-12 col-md-5 justify-content-center">
-            <button class="lang-toggle" type="button" role="button" aria-label="Language Toggle">English</button>
-            <a href="login_signup.html" class="btn btn-primary" id="login-signup">Login</a>
-            <a href="login_signup.html" class="btn btn-primary" id="login-signup">Sign-Up</a>
-        </div>
-    </header>
-</div>
-<!-- *********************** Header ********************************* -->
+    </nav>
 
-    <!-- Form Container -->
-    <div class="form-container my-2">
-        <h1>Crop Recommendation System <span>🌱</span></h1>
+    <!-- Form without container -->
+    <div class="my-3">
+        <h1 style="color: #ffcc00;">Crop Recommendation System <span style="color: #ffcc00;">🌱</span></h1>
 
         <!-- Form -->
         <form id="cropForm" action="/predict" method="POST">
@@ -147,17 +126,22 @@
                     <label for="Rainfall">Rainfall</label>
                     <input type="number" step="1" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall in mm" class="form-control" required min="20" max="246">
                 </div>
-                <div class="col-md-4">
-                    <label for="State">State</label>
-                    <select id="State" name="State" class="form-control" required>
-                        <option value="" disabled selected>Select State</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="City">City</label>
-                    <select id="City" name="City" class="form-control" required>
-                        <option value="" disabled selected>Select City</option>
-                    </select>
+            </div>
+
+            <div class="row mt-4">
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="State">State</label>
+                        <select id="State" name="State" class="form-control" required>
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="City">City</label>
+                        <select id="City" name="City" class="form-control" required>
+                            <option value="" disabled selected>Select City</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -169,7 +153,7 @@
         </form>
 
         {% if result %}
-        <!-- Display recommendation text -->
+        <!-- Display recommendation text directly on background -->
         <div class="recommendation">
             Recommended Crop for Cultivation: {{ result }}
         </div>
