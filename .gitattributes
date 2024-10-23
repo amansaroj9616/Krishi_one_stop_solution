@@ -1,3 +1,7 @@
 *.h5 filter=lfs diff=lfs merge=lfs -text
-*.keras filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+Disease[[:space:]]detection/best_cnn_model.keras filter=lfs diff=lfs merge=lfs -text
+Disease[[:space:]]detection/plant_disease_cnn_model.h5 filter=lfs diff=lfs merge=lfs -text
+Plant_vs_non-plant/plant_vs_non_plant_model.h5 filter=lfs diff=lfs merge=lfs -text
+web/on_test/assets/videos/bg_video.mp4 filter=lfs diff=lfs merge=lfs -text
+*.keras filter=lfs diff=lfs merge=lfs -text
