@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant vs Non-Plant Classifier</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <style>
+        /* You can also add custom Tailwind overrides here */
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-5">
+        <div class="text-center mb-5">
+            <h1 class="text-4xl font-bold text-gray-700 mb-3">🌿 Plant vs Non-Plant Image Classifier</h1>
+            <p class="text-lg text-gray-600">Upload an image to classify whether it contains a plant or not.</p>
+        </div>
+
+        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <form action="/predict" method="POST" enctype="multipart/form-data" class="mb-4">
+                <div class="form-group">
+                    <label for="file" class="block text-gray-700 text-sm font-bold mb-2">Choose an Image:</label>
+                    <input type="file" name="file" class="form-control-file border p-2 rounded-lg w-full" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out mt-4">
+                    Predict
+                </button>
+            </form>
+
+            {% if prediction %}
+                <div class="text-center mt-5">
+                    <h3 class="text-2xl font-semibold text-green-600 mb-2">Prediction: {{ prediction }}</h3>
+                    <img src="{{ img_path }}" alt="Uploaded Image" class="rounded-lg shadow-md" style="width:300px;">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional for Bootstrap functionalities) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

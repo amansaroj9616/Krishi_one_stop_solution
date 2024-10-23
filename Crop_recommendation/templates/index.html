@@ -1,0 +1,163 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crop Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
+    <style>
+        
+        body {
+            background-image: url("{{ url_for('static', filename='istockphoto-1284379612-170667a.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            color: #fff; /* Set default text color to white */
+        }
+        h1 {
+            color: #ffcc00; /* Golden yellow for the title to contrast with the background */
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add subtle shadow for better readability */
+        }
+        label {
+            color: #ffcc00; /* Light golden color for the form labels */
+            font-size: 1.1em; /* Increase font size for labels */
+            font-weight: bold; /* Make labels bold */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow to labels for visibility */
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+            color: #000;
+            font-size: 0.8em; /* Smaller font size for input fields */
+            padding: 3px; /* Decrease padding to make input boxes smaller */
+            height: 35px; /* Set a fixed height for the input fields */
+            width: 80%; /* Decrease width for smaller boxes */
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+            margin-bottom: 15px; /* Add margin for spacing */
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        .btn-primary {
+            background-color: #00ff00; /* Bright green for buttons */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #00cc00; /* Slightly darker green on hover */
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff; /* White text for nav links */
+        }
+        .navbar-dark .navbar-brand {
+            color: #ffcc00; /* Golden yellow for the brand text */
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        /* Style for the recommendation text */
+        .recommendation {
+            color: #ffcc00; /* Golden yellow text for contrast */
+            font-size: 2em; /* Large text */
+            font-weight: bold;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+            border-radius: 10px; /* Rounded corners */
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"></a>
+        </div>
+    </nav>
+
+    <!-- Form without container -->
+    <div class="my-3">
+        <h1 style="color: #ffcc00;">Crop Recommendation System <span style="color: #ffcc00;">🌱</span></h1>
+
+        <!-- Form -->
+        <form id="cropForm" action="/predict" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="Nitrogen">Nitrogen</label>
+                    <input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" class="form-control" required min="0" max="140">
+                </div>
+                <div class="col-md-4">
+                    <label for="Phosphorus">Phosphorus</label>
+                    <input type="number" id="Phosphorus" name="Phosphorus" placeholder="Enter Phosphorus" class="form-control" required min="4" max="95">
+                </div>
+                <div class="col-md-4">
+                    <label for="Potassium">Potassium</label>
+                    <input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" class="form-control" required min="4" max="85">
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <label for="Temperature">Temperature</label>
+                    <input type="number" step="1" id="Temperature" name="Temperature" placeholder="Enter Temperature in °C" class="form-control" required min="14" max="39">
+                </div>
+                <div class="col-md-4">
+                    <label for="Humidity">Humidity</label>
+                    <input type="number" step="1" id="Humidity" name="Humidity" placeholder="Enter Humidity in %" class="form-control" required min="14" max="100">
+                </div>
+                <div class="col-md-4">
+                    <label for="pH">pH</label>
+                    <input type="number" step="1" id="pH" name="pH" placeholder="Enter pH value" class="form-control" required min="1" max="14">
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <label for="Rainfall">Rainfall</label>
+                    <input type="number" step="1" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall in mm" class="form-control" required min="20" max="246">
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="State">State</label>
+                        <select id="State" name="State" class="form-control" required>
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="City">City</label>
+                        <select id="City" name="City" class="form-control" required>
+                            <option value="" disabled selected>Select City</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Get Recommendation</button>
+                </div>
+            </div>
+        </form>
+
+        {% if result %}
+        <!-- Display recommendation text directly on background -->
+        <div class="recommendation">
+            Recommended Crop for Cultivation: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

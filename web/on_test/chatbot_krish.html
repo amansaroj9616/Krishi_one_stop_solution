@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Krishi - Empowering Farmers with AI-based crop recommendations, disease detection, and market insights." />
+  <meta name="author" content="Krishi Team" />
+  <meta name="keywords" content="farming, AI, crop recommendations, disease detection, agriculture, marketplace" />
+
+  <title>Krishi Chatbot Assistant</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body class="video-background">
+  <!-- ******************************** background video **************************************************** -->
+  <video autoplay muted loop class="background-video">
+    <source src="assets/videos/bg_video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <!-- ******************************************************************************************************** -->
+  <!-- ******************************** Header and Navbars **************************************************** -->
+  <div class="container-fluid p-2">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-2">
+      <div class="col-md-2 col-12">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <img src="assets/images/Krishi.png" alt="Krishi Logo" width="125" style="border-radius: 10%" />
+        </a>
+      </div>
+      <nav class="nav-links nav col-12 col-md-5 justify-content-center mb-md-0">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="col-12 col-md-5 justify-content-center">
+        <button class="lang-toggle" type="button" role="button" aria-label="Language Toggle">
+          English
+        </button>
+        <a href="login_signup.html" class="btn btn-primary" id="login-signup">Login</a>
+        <a href="login_signup.html" class="btn btn-primary" id="login-signup">Sign-Up</a>
+      </div>
+    </header>
+  </div>
+
+  <!-- **************************** Chatbot Section ************************************ -->
+  <div class="container px-5">
+    <div
+      class="row justify-content-center justify-content-md-between align-items-center g-5 mb-5"
+    >
+      <div class="welcome-section">
+        <h2>Hi! I am Krish, How Can I help you?</h2>
+        <p>
+            Your AI-powered digital assistant for farming guidance and crop recommendations.
+        </p>
+       <div id="chatbot-box" class="chatbot-box">
+          <div id="chat-window" class="chat-window">
+            <div id="chat-output" class="chat-output">
+              <!-- Messages will appear here -->
+            </div>
+          </div>
+          <form id="chat-form" class="chat-form">
+            <input type="text" id="user-input" class="form-control" placeholder="Ask Krish..." />
+            <button style="font-size: 20px;"  class="button">Send</button>
+          </form>
+        </div>
+    </div>
+      </div>
+  </div>
+
+
+  <!-- **************************** Footer ************************************ -->
+  <footer>
+    <p>© 2024 Krishi. All rights reserved.</p>
+  </footer>
+
+  <!-- Chatbot Script -->
+  <script>
+    document.getElementById("chat-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const userInput = document.getElementById("user-input").value;
+      const chatOutput = document.getElementById("chat-output");
+
+      if (userInput) {
+        chatOutput.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+        document.getElementById("user-input").value = "";
+
+        // Simulating a response from Krishi chatbot
+        setTimeout(() => {
+          chatOutput.innerHTML += `<p><strong>Krish:</strong> I am processing your query...</p>`;
+          chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll to bottom
+        }, 1000);
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
