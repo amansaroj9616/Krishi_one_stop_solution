@@ -14,9 +14,11 @@ Krishi is a cutting-edge web and mobile platform designed to empower farmers wit
 
 - **🌱 Crop Recommendation (Text, Voice, Image)**
   - Personalized suggestions using AI analysis.
+  ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/58f0d939f2b161c8f95ae49b12b3cefd501d43ec/Screenshot%202025-03-18%20014739.png)
   
 - **🤖 AI-Powered Bot**
   - Chatbot for real-time assistance (text, voice, image).
+    ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/58f0d939f2b161c8f95ae49b12b3cefd501d43ec/Screenshot%202025-03-18%20014913.png)
 
 - **📢 Personalized Farmer Feed**
   - Tailored tips, disease alerts, and market updates.
@@ -26,12 +28,15 @@ Krishi is a cutting-edge web and mobile platform designed to empower farmers wit
 
 - **🛒 Service Marketplace**
   - Rent machinery, buy fertilizers, and more.
+     
 
 - **🧪 Smart Disease Diagnosis & Yield Prediction**
   - Detect diseases and predict yields using AI.
+     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/58f0d939f2b161c8f95ae49b12b3cefd501d43ec/Screenshot%202025-03-18%20014913.png)
 
 - **💬 E-Marketplace & Community**
   - Buy/sell crops and connect with fellow farmers.
+     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/58f0d939f2b161c8f95ae49b12b3cefd501d43ec/Screenshot%202025-03-18%20015656.png)
 
 - **🌍 Localized Language Support**
   - Multilingual accessibility.
