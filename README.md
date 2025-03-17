@@ -32,7 +32,8 @@ Krishi is a cutting-edge web and mobile platform designed to empower farmers wit
 
 - **🧪 Smart Disease Diagnosis & Yield Prediction**
   - Detect diseases and predict yields using AI.
-     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/58f0d939f2b161c8f95ae49b12b3cefd501d43ec/Screenshot%202025-03-18%20014913.png)
+     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/5e54bddcea01b7392dc52cfa4688c6d2c4725de9/Screenshot%202025-03-18%20021619.png)
+     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/5e54bddcea01b7392dc52cfa4688c6d2c4725de9/leaf-disease-segmentation-example-output.gif)
 
 - **💬 E-Marketplace & Community**
   - Buy/sell crops and connect with fellow farmers.
@@ -43,6 +44,7 @@ Krishi is a cutting-edge web and mobile platform designed to empower farmers wit
 
 - **🌦️ Weather-Based Alerts**
   - Predict disease outbreaks and weather risks.
+     ![Krishi Banner](https://github.com/amansaroj9616/Krishi_one_stop_solution/blob/36f95073259d0a7284fe9c2da10415dac13f7616/maxresdefault%20(1).jpg)
 
 - **🐛 AI Pest Detection**
   - Early pest detection using AI and image analysis.
