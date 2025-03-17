@@ -1,6 +1,6 @@
 # Krishi 🌾 – Intelligent Crop Management and Transaction Platform
 
-![Krishi Banner](link-to-your-image)
+![Krishi Banner](https://github.com/amansaroj9616/Prototype_Krishi/blob/d699f6634b33955c82e03514620470122d26ffb3/Krishi_logo_noBG.png)
 
 ---
 
